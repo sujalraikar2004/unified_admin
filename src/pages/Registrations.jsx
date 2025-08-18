@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { registrationApi } from '../lib/api';
 
 const Registrations = () => {
     const [events, setEvents] = useState([]);
@@ -8,13 +7,19 @@ const Registrations = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleDownload = () => {
-        window.open(registrationApi.getDownloadUrl(), '_blank');
+        window.open('https://unified-backend-0z4c.onrender.com/api/admin/registrations/download', '_blank');
     };
 
     useEffect(() => {
         const fetchRegistrations = async () => {
             try {
-                const data = await registrationApi.getRegistrations();
+                const response = await fetch('https://unified-backend-0z4c.onrender.com/api/admin/registrations');
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch registration data.');
+                }
+
+                const data = await response.json();
                 setEvents(data.data);
             } catch (err) {
                 setError(err.message);
