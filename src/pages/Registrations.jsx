@@ -7,13 +7,13 @@ const Registrations = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleDownload = () => {
-        window.open('https://unified-backend-0z4c.onrender.com/api/admin/registrations/download', '_blank');
+        window.open('https://unified-backend-qxri.onrender.com/api/admin/registrations/download', '_blank');
     };
 
     useEffect(() => {
         const fetchRegistrations = async () => {
             try {
-                const response = await fetch('https://unified-backend-0z4c.onrender.com/api/admin/registrations');
+                const response = await fetch('https://unified-backend-qxri.onrender.com/api/admin/registrations');
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch registration data.');
