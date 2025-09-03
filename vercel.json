@@ -28,6 +28,6 @@
   "installCommand": "npm install",
   "framework": "vite",
   "env": {
-    "VITE_API_URL": "https://unified-backend-0z4c.onrender.com" 
+    "VITE_API_URL": "https://unified-backend-5fbf.onrender.com" 
   }
 }
