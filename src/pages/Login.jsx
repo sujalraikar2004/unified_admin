@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { authApi } from '../lib/api';
 import { Lock, Mail, Shield, Loader2 } from 'lucide-react';
 
 const Login = () => {
@@ -17,19 +18,7 @@ const Login = () => {
         setError(null);
 
         try {
-            const response = await fetch('/api/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || 'Failed to log in.');
-            }
+            const data = await authApi.login({ email, password });
 
             login(data.accessToken);
             navigate('/');

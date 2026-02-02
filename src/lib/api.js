@@ -41,7 +41,7 @@ export const eventApi = {
     getEvents: () => apiFetch('/api/events'),
     createEvent: async (eventData) => {
         const token = localStorage.getItem('adminToken');
-        const response = await fetch('/api/events', {
+        const response = await fetch(`${API_BASE_URL}/api/events`, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@ export const eventApi = {
     },
     updateEvent: async (id, eventData) => {
         const token = localStorage.getItem('adminToken');
-        const response = await fetch(`/api/events/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/events/${id}`, {
             method: 'PUT',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -81,7 +81,7 @@ export const galleryApi = {
     },
     uploadGalleryItem: async (formData) => {
         const token = localStorage.getItem('adminToken');
-        const response = await fetch('/api/gallery', {
+        const response = await fetch(`${API_BASE_URL}/api/gallery`, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${token}`,
